@@ -1,12 +1,9 @@
-package order;
+package mart;
 
 import java.util.Scanner;
 
 import add_user.memberDAO;
 import add_user.memberDTO;
-import mart.MartDTO;
-import mart.inventory;
-import mart.inventoryImpl;
 
 public class OrderServiceImpl implements OrderService {
 	
