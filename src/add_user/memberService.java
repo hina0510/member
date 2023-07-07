@@ -1,12 +1,20 @@
 package add_user;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class memberService {
 	memberDTO dto = new memberDTO();
+	Connection con;
+	PreparedStatement ps;
+	ResultSet rs;
+	Delete del = new Delete();
 	public void administrator(){
-
+		con = DBConnect.getConnect();
+	
 		while(true) {
 			Scanner input = new Scanner(System.in);
 			String id;
@@ -37,7 +45,17 @@ public class memberService {
 						System.out.println("--------------");
 						break;
 					}
-				case 2 : 
+				case 2 :
+					System.out.println("삭제 id 입력");
+					id = input.next();
+					int result = delete( id );
+					
+					if(result == 1) {
+						System.out.println("삭제 성공!!!");
+					}else {
+						System.out.println("문제가 발생했습니다!!!");
+					}
+					
 					break;
 				case 3 : 
 					System.out.println("나가기");return;
@@ -55,9 +73,25 @@ public class memberService {
 		}
 	}
 	
+	
+	private int delete(String id) {
+		int result = 0;
+		String sql ="delete from newst where id = ?";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1 , id );
+			result = ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+
 	ArrayList<memberDTO> getList() {
 		ArrayList<memberDTO> list = null;
-		//process
 		return list;
+		
+		
 	}
 }
