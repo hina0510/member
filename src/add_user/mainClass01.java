@@ -12,9 +12,6 @@ public static void main(String[] args) {
 	signUp sign = new signUpImpl();
 	int num;
 	
-	OrderService order = new OrderServiceImpl();
-	
-	
 	while(true) {
 		System.out.println("1. 회원가입");
 		System.out.println("2. 로그인");
@@ -26,9 +23,9 @@ public static void main(String[] args) {
 		case 1:
 			sign.display();
 			break;
-		case 2: break;
+		case 2: 
+			break;
 		case 3:
-			order.display();
 			break;
 		case 4: break;
 		}

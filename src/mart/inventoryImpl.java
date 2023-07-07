@@ -49,9 +49,8 @@ public class inventoryImpl implements inventory{
 	}
 
 	@Override
-	public MartDTO getList(String id) {
-		MartDTO dto = dao.getList(id);
-		return dto;
+	public void getList(String id) {
+		
 	}
 	
 	

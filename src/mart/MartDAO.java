@@ -3,7 +3,6 @@ package mart;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
 
 import add_user.DBConnect;
 
@@ -27,11 +26,12 @@ public class MartDAO {
 			rs = ps.executeQuery();
 			
 			if (rs.next()) {
-				dto = new MartDTO(rs.getInt("id"),
-									rs.getInt("pro1"),
-									rs.getInt("pro2"),
-									rs.getInt("pro3"),
-									rs.getInt("pro4"));
+				dto = new MartDTO();
+				System.out.println(rs.getInt("id") +"님의 주문 내역" );
+				System.out.println("물 : " + rs.getInt("pro1"));
+				System.out.println("휴지 :" + rs.getInt("pro2"));
+				System.out.println("신발 : " + rs.getInt("pro3"));
+				System.out.println("가방 : " + rs.getInt("pro4"));
 			}
 		}catch (Exception e){
 			e.printStackTrace();
