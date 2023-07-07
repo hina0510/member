@@ -2,10 +2,17 @@ package add_user;
 
 import java.util.Scanner;
 
+import order.OrderService;
+import order.OrderServiceImpl;
+
 public class mainClass01 {
 public static void main(String[] args) {
+	
 	Scanner input = new Scanner(System.in);
 	int num;
+	
+	OrderService order = new OrderServiceImpl();
+	
 	
 	while(true) {
 		System.out.println("1. 회원가입");
@@ -17,7 +24,10 @@ public static void main(String[] args) {
 		switch (num) {
 		case 1: break;
 		case 2: break;
-		case 3: break;
+		case 3:
+			
+			order.display();
+			break;
 		case 4: break;
 		}
 	}

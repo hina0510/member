@@ -3,6 +3,8 @@ package add_user;
 public class memberDTO {
 	String id, pwd, name, email, addr, tel, date;
 
+	
+	
 	public String getId() {
 		return id;
 	}
