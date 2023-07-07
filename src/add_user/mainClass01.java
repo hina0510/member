@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class mainClass01 {
 public static void main(String[] args) {
 	Scanner input = new Scanner(System.in);
+	signUp sign = new signUpImpl();
 	int num;
 	
 	while(true) {
@@ -15,7 +16,9 @@ public static void main(String[] args) {
 		System.out.print(">>>");
 		num = input.nextInt();
 		switch (num) {
-		case 1: break;
+		case 1:
+			sign.display();
+			break;
 		case 2: break;
 		case 3: break;
 		case 4: break;
