@@ -89,6 +89,10 @@ public class OrderServiceImpl implements OrderService {
 				System.out.println("가방 : " +num);
 				dto.setPro4(num);
 			}
+			if (pro == 5) {
+				dao.insert(id);
+				return;
+			}
 		}
 		
 	}
