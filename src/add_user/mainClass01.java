@@ -2,11 +2,16 @@ package add_user;
 
 import java.util.Scanner;
 
+import sign.Sign;
+import sign.SignImp;
+
 public class mainClass01 {
 public static void main(String[] args) {
 	Scanner input = new Scanner(System.in);
 	signUp sign = new signUpImpl();
-	int num;
+	Sign s = new SignImp();
+	int num, result=0;
+	memberDAO dao;
 	
 	while(true) {
 		System.out.println("1. 회원가입");
@@ -19,7 +24,13 @@ public static void main(String[] args) {
 		case 1:
 			sign.display();
 			break;
-		case 2: break;
+		case 2: 
+			if(result == 1) {
+				System.out.println("이미 로그인 중입니다.");
+			}else {
+				result = s.signIn();
+			}
+			break;
 		case 3: break;
 		case 4: break;
 		}
