@@ -44,9 +44,9 @@ public class SignImp implements Sign{
 							System.out.print(dto.getId() + "\t");
 							System.out.print(dto.getPwd() + "\t");
 							System.out.print(dto.getName() + "\t");
-							System.out.print(dto.getEmail() + "\t");
+							System.out.print(dto.getEmail() + "\t\t");
 							System.out.print(dto.getAddr() + "\t");
-							System.out.print(dto.getTel() + "\t");
+							System.out.print(dto.getTel() + "\t\t");
 							System.out.println(dto.getDate() + "\t");
 							System.out.println("-------------------------------------------------------------------------------------");
 						
@@ -60,6 +60,8 @@ public class SignImp implements Sign{
 						String sel = sc.next();
 						if(sel.equals("yes")) {
 							delete(dto);
+							System.out.println("삭제가 완료되었습니다. 메인으로 이동합니다.");
+							return 0;
 						}else if(sel.equals("no")) {
 							System.out.println("삭제를 취소하였습니다.");
 							break;
@@ -67,7 +69,6 @@ public class SignImp implements Sign{
 							System.out.println("제대로 입력해주세요.");
 							break;
 						}
-						break;
 					case 4: 
 						return 1;
 					default :

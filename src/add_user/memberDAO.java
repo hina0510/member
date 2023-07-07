@@ -40,6 +40,7 @@ public class memberDAO {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 			if(rs.next()) {
+				dto = new memberDTO();
 				dto.setId(rs.getString("m_id"));
 				dto.setPwd(rs.getString("m_pwd"));
 				dto.setName(rs.getString("m_name"));
@@ -54,6 +55,7 @@ public class memberDAO {
 		}
 		return dto;
 	}
+
 	public int modify(memberDTO dto) {
 		String sql;
 		String modify;
