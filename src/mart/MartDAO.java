@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import add_user.DBConnect;
+import add_user.memberDTO;
 
 public class MartDAO {
 
@@ -16,6 +17,7 @@ public class MartDAO {
 		con = DBConnect.getConnect();
 	}
 	
+	// 장바구니 목록
 	public MartDTO getList(String id) {
 		
 		MartDTO dto = null;
@@ -27,7 +29,7 @@ public class MartDAO {
 			
 			if (rs.next()) {
 				dto = new MartDTO();
-				System.out.println(rs.getInt("id") +"님의 주문 내역" );
+				System.out.println(rs.getString("id") +"님의 주문 내역" );
 				System.out.println("물 : " + rs.getInt("pro1"));
 				System.out.println("휴지 :" + rs.getInt("pro2"));
 				System.out.println("신발 : " + rs.getInt("pro3"));
@@ -38,4 +40,47 @@ public class MartDAO {
 		}
 		return dto;
 	}
+
+	// 장바구니 목록 삭제
+	public int delete(String id) {
+		int result = 0;
+		
+		String sql = "delete from mart where id = ?";
+		
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, id);
+			
+			result = ps.executeUpdate();	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	// 장바구니 담기
+	public int insert(int num1, int num2, int num3, int num4) {
+		
+		memberDTO dto = new memberDTO(); 
+		int re = 0;
+		
+		String sql = "insert into mart values(?, ?, ?, ?, ?)";
+		
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, dto.getId());
+			ps.setInt(2, num1);
+			ps.setInt(3, num2);
+			ps.setInt(4, num3);
+			ps.setInt(5, num4);
+			
+			re = ps.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return re;
+	}
+	
+	
 }

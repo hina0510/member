@@ -11,7 +11,7 @@ public class DBConnect {
 			
 			String url = "jdbc:oracle:thin:@localhost:1521:xe";
 			
-			con = DriverManager.getConnection(url, "java", "1234");//C##java
+			con = DriverManager.getConnection(url, "java", "1234");  //C##java
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
