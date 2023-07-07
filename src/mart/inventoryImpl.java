@@ -1,6 +1,5 @@
 package mart;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class inventoryImpl implements inventory{
@@ -49,8 +48,15 @@ public class inventoryImpl implements inventory{
 	}
 
 	@Override
-	public void getList(String id) {
-		
+	public MartDTO getList(String id) {
+		MartDTO dto = dao.getList(id);
+		return dto;
+	}
+
+	@Override
+	public int delete(String id) {
+		int result = dao.delete(id);
+		return result;
 	}
 	
 	

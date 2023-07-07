@@ -1,17 +1,15 @@
 package add_user;
 
 import java.util.Scanner;
-
-import mart.OrderService;
-import mart.OrderServiceImpl;
+//import sign.*;
 
 public class mainClass01 {
 public static void main(String[] args) {
 	
 	Scanner input = new Scanner(System.in);
 	signUp sign = new signUpImpl();
-	int num;
-	
+//	Sign s = new SignImp();
+	int num, result =0;
 	while(true) {
 		System.out.println("1. 회원가입");
 		System.out.println("2. 로그인");
@@ -20,13 +18,18 @@ public static void main(String[] args) {
 		System.out.print(">>>");
 		num = input.nextInt();
 		switch (num) {
+
 		case 1:
 			sign.display();
 			break;
 		case 2: 
 			break;
 		case 3:
-			break;
+			if(result == 1) {
+				System.out.println("이미 로그인 중입니다.");
+			}else {
+//				result = s.signIn();
+			}break;
 		case 4: break;
 		}
 	}
