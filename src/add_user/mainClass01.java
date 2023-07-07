@@ -9,9 +9,9 @@ import sign.*;
 public class mainClass01 {
 	public static void main(String[] args) {
 		
+		OrderService order = new OrderServiceImpl();
 		signUp sign = new signUpImpl();
 		Sign s = new SignImp();
-		OrderService order = new OrderServiceImpl();
 		
 		Scanner input = new Scanner(System.in);
 		

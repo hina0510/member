@@ -53,7 +53,7 @@ public class OrderServiceImpl implements OrderService {
 	}
 		
 	@Override
-	public int display() {
+	public void display() {
 		MartDTO dto = new MartDTO();
 		Scanner sc = new Scanner(System.in);
 		int pro, num;
@@ -68,7 +68,7 @@ public class OrderServiceImpl implements OrderService {
 			System.out.println("주문하실 물품 >>> ");
 			
 			pro = sc.nextInt();
-			if (pro == 5) 	return 0;
+			if (pro == 5) 	return;
 			
 			System.out.println("개수 >> ");
 			num = sc.nextInt();
@@ -89,7 +89,6 @@ public class OrderServiceImpl implements OrderService {
 				System.out.println("가방 : " +num);
 				dto.setPro4(num);
 			}
-			return dao.insert(dto.getPro1(), dto.getPro2(), dto.getPro3(), dto.getPro4());
 		}
 		
 	}

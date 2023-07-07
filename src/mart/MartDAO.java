@@ -59,20 +59,20 @@ public class MartDAO {
 	}
 
 	// 장바구니 담기
-	public int insert(int num1, int num2, int num3, int num4) {
+	public int insert(String id) {
 		
-		memberDTO dto = new memberDTO(); 
+		MartDTO dto = new MartDTO();
 		int re = 0;
 		
 		String sql = "insert into mart values(?, ?, ?, ?, ?)";
 		
 		try {
 			ps = con.prepareStatement(sql);
-			ps.setString(1, dto.getId());
-			ps.setInt(2, num1);
-			ps.setInt(3, num2);
-			ps.setInt(4, num3);
-			ps.setInt(5, num4);
+			ps.setString(1, id);
+			ps.setInt(2, dto.getPro1());
+			ps.setInt(3, dto.getPro2());
+			ps.setInt(4, dto.getPro3());
+			ps.setInt(5, dto.getPro4());
 			
 			re = ps.executeUpdate();
 			

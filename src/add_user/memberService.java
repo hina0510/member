@@ -11,7 +11,6 @@ public class memberService {
 	Connection con;
 	PreparedStatement ps;
 	ResultSet rs;
-	Delete del = new Delete();
 	public void administrator(){
 		con = DBConnect.getConnect();
 	
@@ -62,11 +61,8 @@ public class memberService {
 				}
 			}else if(id != dto.id){
 				System.out.println("id가 존재 하지않습니다");
-				return;
 			}else if(pwd != dto.pwd) {
 				System.out.println("비밀번호가 맞지 않습니다");
-				return;
-			
 			}
 
 
