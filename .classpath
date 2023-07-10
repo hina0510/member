@@ -6,6 +6,10 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="D:/코딩/0_국비 핀테크/ojdbc8.jar"/>
+=======
+	<classpathentry kind="lib" path="D:/핀테크 강민구/ojdbc8.jar"/>
+>>>>>>> 262a521d62ae4c48776f8c106d923a7e6bd89d5a
 	<classpathentry kind="output" path="bin"/>
 </classpath>
