@@ -12,6 +12,7 @@ public static void main(String[] args) {
 	signUp sign = new signUpImpl();
 	login l = new loginImp();
 	OrderService os =  new OrderServiceImpl();
+	memberService ms = new memberService();
 	
 	int num, result = 0;
 	String id = null;
@@ -32,13 +33,20 @@ public static void main(String[] args) {
 			if(result == 0) {
 				id = l.signIn();
 				if(id != null) {
-					result = l.select(id);
+					if(id.equals("admin")) {
+						System.out.println("관리자로 로그인했습니다");
+						result = ms.administrator();
+					}else {
+						result = l.select(id);
+					}
 				}else {
-					
+					continue;
 				}
-			}else if(result == 1 && id != null){
+			}else if(result == 1){
 				System.out.println("현재 로그인 중인 ID : " + id);
 				result = l.select(id);
+			}else if( result ==2) {
+				result = ms.administrator();
 			}
 			break;
 		case 3: 

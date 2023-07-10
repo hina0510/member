@@ -3,6 +3,7 @@ package add_user;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -152,6 +153,30 @@ public class memberDAO {
 			e.printStackTrace();
 		}
 		return result;
+	}
+	
+	public ArrayList<memberDTO> getList() {
+		ArrayList<memberDTO> list = new ArrayList<>();
+		String sql = "select * from memberlist";
+		memberDTO dto = null;
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while( rs.next() ) {
+				dto  = new memberDTO();
+				dto.setId( rs.getString("m_id") );
+				dto.setName( rs.getString("m_name") );
+				dto.setEmail( rs.getString("m_email") );
+				dto.setAddr( rs.getString("m_addr") );
+				dto.setTel( rs.getString("m_tel") );
+				dto.setDate( rs.getString("m_date") );
+				
+				list.add(dto);
+			}
+			} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 	
 

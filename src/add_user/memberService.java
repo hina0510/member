@@ -11,41 +11,40 @@ public class memberService {
 	Connection con;
 	PreparedStatement ps;
 	ResultSet rs;
-	public void administrator(){
-		con = DBConnect.getConnect();
+	memberDAO dao = new memberDAO();
 	
-		while(true) {
+	public int administrator(){
+		con = DBConnect.getConnect();
+		
 			Scanner input = new Scanner(System.in);
 			String id;
 			String pwd;
 			int num;
-			System.out.println("아이디를 입력해 주세요");
-			id = input.next();
-			System.out.println("비밀번호를 입력해 주세요");
-			pwd = input.next();
-			if(id == dto.id && pwd == dto.pwd) {
+			while(true) {
 				System.out.println("원하시는 내용을 선택해주세요");
 				System.out.println("1.전체 회원 정보 보기");
 				System.out.println("2.삭제");
+				System.out.println("3.나가기");
+				System.out.println("4.로그아웃");
 				num = input.nextInt();
 				switch(num) {
 				case 1 : 
-					ArrayList<memberDTO> list = getList();
-					System.out.println("=== 회원 정보 ===");
-					System.out.println("id\tname\temail\taddr\ttel\tdate");
-					System.out.println("================");
+					ArrayList<memberDTO> list = dao.getList();
+					System.out.println("=========== 전체 회원 정보 =======================");
+					System.out.println("id\tname\temail\t\taddr\ttel\tdate");
+					System.out.println("===============================================");
 					for(memberDTO d : list) {
 						System.out.print( d.getId()+"\t" );
 						System.out.print( d.getName()+"\t" );
 						System.out.print( d.getEmail()+"\t" );
 						System.out.print( d.getAddr()+"\t" );
 						System.out.print( d.getTel()+"\t" );
-						System.out.print( d.getDate()+"\t" );
-						System.out.println("--------------");
-						break;
-					}
+						System.out.println( d.getDate()+"\t" );
+						
+						
+					}break;
 				case 2 :
-					System.out.println("삭제 id 입력");
+					System.out.println("삭제 id 입력 :");
 					id = input.next();
 					int result = delete( id );
 					
@@ -57,22 +56,18 @@ public class memberService {
 					
 					break;
 				case 3 : 
-					System.out.println("나가기");return;
+					return 2;
+				case 4 :
+					return 0;
+					
 				}
-			}else if(id != dto.id){
-				System.out.println("id가 존재 하지않습니다");
-			}else if(pwd != dto.pwd) {
-				System.out.println("비밀번호가 맞지 않습니다");
 			}
-
-
-		}
-	}
+		}		
 	
 	
 	private int delete(String id) {
 		int result = 0;
-		String sql ="delete from newst where id = ?";
+		String sql ="delete from memberlist where m_id = ?";
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setString(1 , id );
@@ -84,8 +79,9 @@ public class memberService {
 	}
 
 
-	ArrayList<memberDTO> getList() {
-		ArrayList<memberDTO> list = null;
+	public ArrayList<memberDTO> getList() {
+		ArrayList<memberDTO> list =  dao.getList();
+		
 		return list;
 		
 		
