@@ -55,7 +55,7 @@ public class memberDAO {
 		}
 		return dto;
 	}
-	
+
 	public int modify(memberDTO dto) {
 		String sql;
 		String modify;
