@@ -22,7 +22,7 @@ public class MartDAO {
 	public ArrayList<MartDTO> getList(String mid) {
 		
 		ArrayList<MartDTO> list = new ArrayList<>();
-
+		
 		String sql = "select * from mart where id = '" + mid+"'";
 		
 		try {
@@ -37,11 +37,12 @@ public class MartDAO {
 				dto.setPro4(rs.getInt("pro4"));
 				
 				list.add(dto);
+				return list;
 			} 
 		}catch (Exception e){
 			e.printStackTrace();
 		}
-		return list;
+		return null;
 	}
 
 	// 장바구니 목록 삭제

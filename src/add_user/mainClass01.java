@@ -42,10 +42,15 @@ public static void main(String[] args) {
 			}
 			break;
 		case 3: 
-			os.main(id);
+			if (result == 0) {
+				System.out.println("로그인 후 이용해주세요");
+			}else {
+				os.main(id);
+			}
 			break;
 		case 4: break;
 		}
 	}
+	
 }
 }
