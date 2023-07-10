@@ -2,9 +2,13 @@ package sign;
 
 import java.util.Scanner;
 import add_user.*;
+import mart.MartDTO;
+import mart.OrderService;
 
 public class SignImp implements Sign{
 
+	MartDTO dto1 = new MartDTO();
+	
 	memberDAO dao;
 	public SignImp() {
 		dao = new memberDAO();
@@ -28,6 +32,7 @@ public class SignImp implements Sign{
 			String pwd = sc.next();
 			if(dto.getPwd().equals(pwd)) {
 				System.out.println("로그인되었습니다.");
+				dto1.setId(dto.getId());
 
 				while(true) {
 					System.out.println("-----------------------------------");

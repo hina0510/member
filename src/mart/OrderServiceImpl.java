@@ -1,12 +1,15 @@
 package mart;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import add_user.memberDTO;
+import add_user.signUpImpl;
 
 public class OrderServiceImpl implements OrderService {
 	
 	memberDTO dto1 = new memberDTO();
+	MartDTO dto = new MartDTO();
 	
 	MartDAO dao;
 	public OrderServiceImpl() {
@@ -20,6 +23,7 @@ public class OrderServiceImpl implements OrderService {
 		int num;
 		
 		while (true) {
+			System.out.println(dto1.getId());
 			System.out.println("1.주문 하기");
 			System.out.println("2.주문 내역");
 			System.out.println("3.주문 취소");
@@ -28,17 +32,18 @@ public class OrderServiceImpl implements OrderService {
 			num = sc.nextInt();
 			switch (num) {
 			case 1:
-				display();
+				display(mid);
 				break;
-			case 2: 
-				getList(dto1.getId());
+			case 2:
+				System.out.println(mid + "님이 장바구니 목록");
+				getList(mid);
 				break;
 			case 3:
 				System.out.println("주문 취소하시겠습니까?");
 				System.out.println("1.yes\t 2.no");
 				int ans = sc.nextInt();
 				if (ans == 1) {
-					delete(dto1.getId());
+					delete(mid);
 					System.out.println("주문이 취소되었습니다");
 					System.out.println("main으로 돌아갑니다..");
 					return;
@@ -53,7 +58,7 @@ public class OrderServiceImpl implements OrderService {
 	}
 		
 	@Override
-	public void display() {
+	public void display(String id) {
 		MartDTO dto = new MartDTO();
 		Scanner sc = new Scanner(System.in);
 		int pro, num;
@@ -91,21 +96,24 @@ public class OrderServiceImpl implements OrderService {
 			}
 			if (pro == 5) {
 				dao.insert(id);
-				return;
 			}
 		}
 		
 	}
 
 	@Override
-	public MartDTO getList(String id) {
-		MartDTO dto = dao.getList(id);
-		return dto;
+	public ArrayList<MartDTO> getList(String id) {
+		
+		ArrayList<MartDTO> list = new ArrayList<>();
+		list = dao.getList(mid);
+		System.out.println(list);
+		return list;
 	}
 
 	@Override
 	public int delete(String id) {
-		int result = dao.delete(id);
+		int result = dao.delete(mid);
 		return result;
 	}
+	
 }

@@ -1,7 +1,9 @@
 package mart;
 
 public class MartDTO {
+	
 	private String id;
+	private int pro1, pro2, pro3, pro4;
 	
 	public String getId() {
 		return id;
@@ -9,8 +11,6 @@ public class MartDTO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	
-	private int pro1, pro2, pro3, pro4;
 	
 	public int getPro1() {
 		return pro1;
