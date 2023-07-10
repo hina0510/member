@@ -23,7 +23,7 @@ public class MartDAO {
 		
 		ArrayList<MartDTO> list = new ArrayList<>();
 
-		String sql = "select * from mart where id = " + mid;
+		String sql = "select * from mart where id = '" + mid+"'";
 		
 		try {
 			ps = con.prepareStatement(sql);
@@ -62,12 +62,9 @@ public class MartDAO {
 	}
 
 	// 장바구니 담기
-	public int insert(String id) {
-		
-		MartDTO dto = new MartDTO();
+	public int insert(String id, MartDTO dto) {
 		
 		int re = 0;
-		
 		String sql = "insert into mart values("+ id +", ?, ?, ?, ?)";
 		
 		try {

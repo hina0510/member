@@ -3,14 +3,19 @@ package add_user;
 import java.util.Scanner;
 
 import login.*;
+import mart.OrderService;
+import mart.OrderServiceImpl;
 
 public class mainClass01 {
 public static void main(String[] args) {
 	Scanner input = new Scanner(System.in);
 	signUp sign = new signUpImpl();
 	login l = new loginImp();
+	OrderService os =  new OrderServiceImpl();
+	
 	int num, result = 0;
 	String id = null;
+	
 	while(true) {
 		System.out.println("1. 회원가입");
 		System.out.println("2. 로그인 및 회원정보");
@@ -29,14 +34,16 @@ public static void main(String[] args) {
 				if(id != null) {
 					result = l.select(id);
 				}else {
+					
 				}
-				
 			}else if(result == 1 && id != null){
 				System.out.println("현재 로그인 중인 ID : " + id);
 				result = l.select(id);
 			}
 			break;
-		case 3: break;
+		case 3: 
+			os.main(id);
+			break;
 		case 4: break;
 		}
 	}

@@ -17,13 +17,12 @@ public class OrderServiceImpl implements OrderService {
 	}
 	
 	@Override
-	public void main() {
+	public void main(String mid) {
 	
 		Scanner sc = new Scanner(System.in);
 		int num;
 		
 		while (true) {
-			System.out.println(dto1.getId());
 			System.out.println("1.주문 하기");
 			System.out.println("2.주문 내역");
 			System.out.println("3.주문 취소");
@@ -36,7 +35,14 @@ public class OrderServiceImpl implements OrderService {
 				break;
 			case 2:
 				System.out.println(mid + "님이 장바구니 목록");
-				getList(mid);
+				ArrayList<MartDTO> list = new ArrayList<>();
+				list = dao.getList(mid);
+				for (MartDTO li : list) {
+					System.out.println("물 : " +li.getPro1());
+					System.out.println("휴지 : " +li.getPro2());
+					System.out.println("신발 : " +li.getPro3());
+					System.out.println("가방 : " +li.getPro4());
+				}
 				break;
 			case 3:
 				System.out.println("주문 취소하시겠습니까?");
@@ -57,8 +63,7 @@ public class OrderServiceImpl implements OrderService {
 		}	
 	}
 		
-	@Override
-	public void display(String id) {
+	private int display(String id) {
 		MartDTO dto = new MartDTO();
 		Scanner sc = new Scanner(System.in);
 		int pro, num;
@@ -71,9 +76,11 @@ public class OrderServiceImpl implements OrderService {
 			System.out.println("4. 가방");
 			System.out.println("5. exit");
 			System.out.println("주문하실 물품 >>> ");
-			
 			pro = sc.nextInt();
-			if (pro == 5) 	return;
+			
+			if (pro == 5) {
+				return dao.insert(id, dto);
+			}
 			
 			System.out.println("개수 >> ");
 			num = sc.nextInt();
@@ -94,15 +101,12 @@ public class OrderServiceImpl implements OrderService {
 				System.out.println("가방 : " +num);
 				dto.setPro4(num);
 			}
-			if (pro == 5) {
-				dao.insert(id);
-			}
+			
 		}
 		
 	}
 
-	@Override
-	public ArrayList<MartDTO> getList(String id) {
+	private ArrayList<MartDTO> getList(String mid) {
 		
 		ArrayList<MartDTO> list = new ArrayList<>();
 		list = dao.getList(mid);
@@ -110,8 +114,7 @@ public class OrderServiceImpl implements OrderService {
 		return list;
 	}
 
-	@Override
-	public int delete(String id) {
+	private int delete(String mid) {
 		int result = dao.delete(mid);
 		return result;
 	}
